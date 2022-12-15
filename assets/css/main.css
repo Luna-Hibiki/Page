@@ -1,0 +1,202 @@
+/* Import local css */
+@import url(/assets/css/reset.css); /* Reset css */
+
+html {
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Temp */
+:root {
+    --page-color-0: #212121;
+    --page-color-0-gra_0: #2121211f;
+    --page-color-0-gra_1: #212121f0;
+    --page-color-1: #FAFAFA;
+    --page-color-2: #F44336;
+    --page-color-3: #FDD835;
+    --page-color-4: #4CAF50;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: url(/assets/img/cover/cover_1.png) left/cover no-repeat;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.page::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom, var(--page-color-0), var(--page-color-0-gra_0), var(--page-color-0-gra_0), var(--page-color-0-gra_0), var(--page-color-0-gra_0), var(--page-color-0-gra_0), var(--page-color-0-gra_0));
+}
+
+.page[hideMainPage=false] .page-mainContainer#clockContainer {
+    display: none;
+}
+
+.page[hideMainPage=true] .page-mainContainer#mainContainer {
+    display: none;
+}
+
+.page-mainContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.page-mainContainer#clockContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--page-color-0-gra_1);
+}
+
+#clockContainer .clock-text {
+    color: var(--page-color-1);
+    font-size: 4em;
+}
+
+#clockContainer .clock-button {
+    z-index: 10;
+    transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#clockContainer .clock-button:hover {
+    transform: translateY(-10px);
+}
+
+#clockContainer .clock-button button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#clockContainer .clock-button button svg {
+    height: 40px;
+    width: 40px;
+    fill: var(--page-color-1);
+}
+
+
+.page-childContainer {
+    height: var(--childHeight, 0px);
+    width: var(--childWidth, 0px);
+    margin: 20px;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.page-childContainer div:first-child {
+    margin-top: 5px;
+}
+
+#navList.page-childContainer div:first-child {
+    margin-top: 0px;
+}
+
+.page-childContainer:not(:first-child) {
+    margin-top: 0 !important;
+}
+
+.page-childContainer#searchBar {
+    display: flex;
+    align-items: center;
+    --childHeight: calc(40px - 20px);
+    min-height: 40px;
+    --childWidth: calc(100% - 40px);
+    padding: 0px 10px;
+}
+
+#searchBar svg {
+    fill: var(--page-color-1);
+}
+
+#searchBar input {
+    width: 100%;
+    margin-left: 10px;
+    background-color: transparent;
+    color: var(--page-color-1);
+    border: none;
+    outline: none;
+}
+
+.page-childContainer#navList {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 70%; /* play with this to change height of the children, 50% will fill half */
+    grid-template-columns: unset; /* do not set template columns and rows */
+    grid-template-rows: auto;
+    column-gap: 10px;
+    overflow: auto;
+    --childHeight: calc(100% - 100px);
+    --childWidth: calc(100% - 40px);
+    padding: 10px;
+    scrollbar-width: thin;
+}
+
+.navItem ul {
+    padding: 10px;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navItem ul li {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px 20px;
+    z-index: 2;
+    background-color: var(--page-color-0);
+    color: var(--page-color-1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .3s cubic-bezier(.46,-0.23,.46,1.23);
+}
+
+
+.navItem ul li:hover {
+    transform: translateX(10px);
+}
+
+.navItem ul li a {
+    color: var(--page-color-1);
+    text-decoration: none;
+}
+
+.navItem ul li img {
+    height: 1.5em;
+    margin-right: 10px !important;
+}
+
+/* RWP */
+@media screen and (max-height: 600px) {
+    .page {
+        min-height: 600px;
+    }
+}
+
+@media screen and (min-width: 630px) {
+    .page-childContainer#navList {
+        grid-auto-columns: 300px;
+    }
+}
