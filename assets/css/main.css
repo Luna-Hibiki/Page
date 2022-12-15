@@ -26,7 +26,7 @@ ul {
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background: url(/assets/img/cover/cover_1.png) left/cover no-repeat;
+    background: url(/assets/img/cover/cover_1.png) center/cover no-repeat;
     font-family: 'Roboto Mono', monospace;
 }
 
