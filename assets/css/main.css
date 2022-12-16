@@ -40,16 +40,22 @@ ul {
 }
 
 .page[hideMainPage=false] .page-mainContainer#clockContainer {
-    display: none;
+    transform: translateY(-100%);
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
-.page[hideMainPage=true] .page-mainContainer#mainContainer {
-    display: none;
+.page[hideMainPage=true] .page-mainContainer#clockContainer {
+    transform: translateY(0%);
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 .page-mainContainer {
     height: 100%;
     width: 100%;
+}
+
+.page-mainContainer[hide] {
+    display: none !important;
 }
 
 .page-mainContainer#clockContainer {
@@ -67,11 +73,6 @@ ul {
 
 #clockContainer .clock-button {
     z-index: 10;
-    transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#clockContainer .clock-button:hover {
-    transform: translateY(-10px);
 }
 
 #clockContainer .clock-button button {
@@ -135,6 +136,13 @@ ul {
     outline: none;
 }
 
+#searchBar button {
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 .page-childContainer#navList {
     display: grid;
     grid-auto-flow: column;

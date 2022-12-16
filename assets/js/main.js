@@ -31,3 +31,46 @@ function init() {
 }
 
 init()
+
+var button1 = document.getElementById('slideUp'),
+    button2 = document.getElementById('slideDown')
+    mainPage = document.getElementById('mainPage')
+    slidePane = document.getElementById("clockContainer"),
+    mainPane = document.getElementById('mainContainer')
+    
+button1.addEventListener('click',() => {
+    attStatus = mainPage.getAttribute('hidemainpage')
+    if (attStatus === "true") {
+        mainPage.setAttribute("hideMainPage", "false");
+        setTimeout(() => {
+            slidePane.style = "display: none"
+            mainPane.toggleAttribute('hide')
+        }, 1000)
+    }
+})
+
+button2.addEventListener('click',() => {
+    console.log('A');
+    attStatus = mainPage.getAttribute('hidemainpage')
+    if (attStatus === "false") {
+        mainPane.toggleAttribute('hide')
+        slidePane.style = ""
+        mainPage.setAttribute("hidemainpage", "true")
+    }
+})
+
+var searchTarget = document.getElementById('searchInput')
+
+searchTarget.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        var content = searchTarget.value
+
+        if (content === "$reload") {
+            return window.location.reload()
+        }
+
+        content = content.replaceAll(' ', '+')
+        window.open(`https://www.google.com/search?q=${content}`, '_blank')
+        searchTarget.value = ""
+    }
+})
