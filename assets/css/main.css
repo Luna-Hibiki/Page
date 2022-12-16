@@ -6,6 +6,10 @@ html {
     scrollbar-width: thin;
 }
 
+body {
+    background-color: var(--page-color-0);
+}
+
 ul {
     list-style: none;
 }
@@ -26,7 +30,7 @@ ul {
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background: url(/assets/img/cover/cover_1.png) center/cover no-repeat;
+    background: var(--url) center/cover no-repeat;
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -41,12 +45,10 @@ ul {
 
 .page[hideMainPage=false] .page-mainContainer#clockContainer {
     transform: translateY(-100%);
-    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 .page[hideMainPage=true] .page-mainContainer#clockContainer {
     transform: translateY(0%);
-    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 .page-mainContainer {
@@ -64,6 +66,7 @@ ul {
     justify-content: space-around;
     align-items: center;
     background-color: var(--page-color-0-gra_1);
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 #clockContainer .clock-text {
@@ -194,6 +197,20 @@ ul {
 .navItem ul li img {
     height: 1.5em;
     margin-right: 10px !important;
+}
+
+/* NSFW code */
+
+[nsfw] .page-mainContainer#clockContainer, [nsfw] .page-mainContainer#mainContainer {
+    display: none !important;
+}
+
+[nsfw] {
+    background-size: contain !important;
+}
+
+[nsfw]::before {
+    background-image: none !important;
 }
 
 /* RWP */
