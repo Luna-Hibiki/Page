@@ -8,7 +8,7 @@ var button1 = document.getElementById('slideUp'),
     mainPane = document.getElementById('mainContainer')
 
 const bgMin = 0,
-      bgMax = 6
+      bgMax = 10
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
